@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <script src="index.js"></script>
+    <main>
+        <div class="tamagochi">
+            <h1>Tamagochi</h1>
+        </div>
+        <div class="tamagochi">
+            <p id="msg"></p>
+            <img id="img" src="img/hatch.png" alt="">
+        </div>
+
+        <div class="status-bars">
+
+            <div class="status-border">
+                <div class="status" id="hunger" style="height:24px;width:0%">Hunger</div>
+            </div>
+
+            <div class="status-border">
+                <div class="status" id="thirst" style="height:24px;width:0%">Thirst</div>
+            </div>
+
+            <div class="status-border">
+                <div class="status" id="rest" style="height:24px;width:0%">Rest</div>
+            </div>
+
+            <div class="status-border">
+                <div class="status" id="happiness" style="height:24px;width:0%">Happiness</div>
+            </div>
+
+        </div>
+        <div class="tamagochi">
+            <button onclick="hatch()" class="button" id="hatch-button">Hatch Tamagochi</button>
+            <button onclick="feed()" class="button">Feed</button>
+            <button onclick="drink()" class="button">Drink</button>
+            <button onclick="sleep()" class="button">Sleep</button>
+            <button onclick="play()" class="button">Play</button>
+            <!-- <button onclick="remove()" class="button">Remove</button> -->
+        </div>
+    </main>
+</body>
+
+</html>

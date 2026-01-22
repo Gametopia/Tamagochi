@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f0f0f0;
+}
+
+main {
+    background-color: #f0f0f0;
+}
+
+.tamagochi {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #f0f0f0;
+}
+
+.button {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    border: 0;
+}
+
+.button:hover {
+    background-color: #004ea2;
+}
+
+img {
+    width: 350px;
+}
+
+.status-bars {
+    max-width: 500px;
+    display: block;
+    align-self: center;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #f0f0f0;
+    flex-direction: column;
+}
+
+.status {
+    background-color: green;
+    color: #f0f0f0;
+}
+
+.status-border {
+    max-width: 500px;
+    margin-bottom: 5px;
+    border: 2px solid black;
+}
