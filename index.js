@@ -89,6 +89,7 @@ function removeHa() {
 }
 
 function hatch() {
+  const music = new Audio('audio/bgmusic.mp3')
   document.getElementById('hatch-button').style = "display:none;";
 
   animHunger();
@@ -96,15 +97,37 @@ function hatch() {
   animRest();
   animHappiness();
 
+  music.play()
+
   setTimeout(hatchInterval, 1200);
   resetimg();
 }
 
 function hatchInterval() {
-  setInterval(removeH, 2400);
-  setInterval(removeT, 2600);
-  setInterval(removeR, 2500);
-  setInterval(removeHa, 2900);
+  const hunger = document.getElementById("hunger");
+  let hungerWidth = parseInt(hunger.style.width) || 0;
+
+  const thirst = document.getElementById("thirst");
+  let thirstWidth = parseInt(thirst.style.width) || 0;
+
+  const rest = document.getElementById("rest");
+  let restWidth = parseInt(rest.style.width) || 0;
+
+  const happiness = document.getElementById("happiness");
+  let haWidth = parseInt(happiness.style.width) || 0;
+
+  let hungerinterval = setInterval(removeH, 2400);
+  let thirstinterval = setInterval(removeT, 2600);
+  let restinterval = setInterval(removeR, 2500);
+  let playinterval =  setInterval(removeHa, 2900);
+
+  if (hungerWidth <= 0) {
+    clearInterval(hungerinterval)
+    clearInterval(thirstinterval)
+    clearInterval(restinterval)
+    clearInterval(playinterval)
+  }
+
 
 }
 
@@ -163,6 +186,7 @@ function animRest() {
 }
 
 function feed() {
+  const music = new Audio('audio/powerup1.mp3');
   const hunger = document.getElementById("hunger");
 
 
@@ -170,16 +194,21 @@ function feed() {
   let newWidth = Math.min(100, currentWidth + 15);
   hunger.style.width = newWidth + "%"
 
+  music.play();
+
   document.getElementById('img').src = "img/eat.png";
   setTimeout(resetimg, 1200);
 }
 
 function drink() {
+  const music = new Audio('audio/powerup1.mp3');
   const thirst = document.getElementById("thirst");
 
   let currentWidth = parseInt(thirst.style.width) || 0;
   let newWidth = Math.min(100, currentWidth + 22);
   thirst.style.width = newWidth + "%"
+
+  music.play();
 
   document.getElementById('img').src = "img/drink.png";
 
@@ -187,11 +216,14 @@ function drink() {
 }
 
 function sleep() {
+  const music = new Audio('audio/powerup1.mp3');
   const rest = document.getElementById("rest");
 
   let currentWidth = parseInt(rest.style.width) || 0;
   let newWidth = Math.min(100, currentWidth + 20);
   rest.style.width = newWidth + "%"
+
+  music.play();
 
   document.getElementById('img').src = "img/sleep.png";
 
@@ -199,11 +231,14 @@ function sleep() {
 }
 
 function play() {
+  const music = new Audio('audio/powerup1.mp3');
   const happiness = document.getElementById("happiness");
 
   let currentWidth = parseInt(happiness.style.width) || 0;
   let newWidth = Math.min(100, currentWidth + 20);
   happiness.style.width = newWidth + "%"
+
+  music.play();
 
   document.getElementById('img').src = "img/play.png";
 
@@ -211,18 +246,26 @@ function play() {
 }
 
 function resetimg() {
-  document.getElementById('img').src = "img/talk.png"
+  document.getElementById('img').src = "img/talk.png";
 }
 
 function sad() {
-  document.getElementById('img').src = "img/sad.png"
+  document.getElementById('img').src = "img/sad.png";
 }
 
 function dead() {
+  const music = new Audio('audio/death.mp3');
   const hunger = document.getElementById('hunger');
   const thirst = document.getElementById('thirst');
   const rest = document.getElementById('rest');
   const happiness = document.getElementById('happiness');
+
+  // clearInterval(hungerinterval);
+  // clearInterval(thirstinterval);
+  // clearInterval(restinterval);
+  // clearInterval(playinterval);
+
+  music.play();
 
   hunger.style.width = '0%';
   thirst.style.width = '0%';
@@ -230,6 +273,7 @@ function dead() {
   happiness.style.width = '0%';
 
   document.getElementById('img').src = "img/dead.png";
+
 
 }
 
