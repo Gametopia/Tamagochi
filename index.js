@@ -22,9 +22,6 @@ function removeH() {
   else {
     hunger.style.backgroundColor = "green";
   }
-  if (currentWidth <= 0) {
-    dead();
-  }
 }
 
 function removeT() {
@@ -42,9 +39,7 @@ function removeT() {
   else {
     thirst.style.backgroundColor = "green";
   }
-  if (currentWidth <= 0) {
-    dead();
-  }
+
 }
 
 function removeR() {
@@ -61,9 +56,6 @@ function removeR() {
   }
   else {
     rest.style.backgroundColor = "green";
-  }
-  if (currentWidth <= 0) {
-    dead();
   }
 }
 
@@ -83,9 +75,6 @@ function removeHa() {
   else {
     happiness.style.backgroundColor = "green";
   }
-  if (currentWidth <= 0) {
-    dead();
-  }
 }
 
 function hatch() {
@@ -104,6 +93,16 @@ function hatch() {
 }
 
 function hatchInterval() {
+
+  let hungerinterval = setInterval(removeH, 2400);
+  let thirstinterval = setInterval(removeT, 2600);
+  let restinterval = setInterval(removeR, 2500);
+  let playinterval =  setInterval(removeHa, 2900);
+  let widthInterval = setInterval(getWidth, 1000);
+
+
+
+  function getWidth(){ 
   const hunger = document.getElementById("hunger");
   let hungerWidth = parseInt(hunger.style.width) || 0;
 
@@ -116,17 +115,43 @@ function hatchInterval() {
   const happiness = document.getElementById("happiness");
   let haWidth = parseInt(happiness.style.width) || 0;
 
-  let hungerinterval = setInterval(removeH, 2400);
-  let thirstinterval = setInterval(removeT, 2600);
-  let restinterval = setInterval(removeR, 2500);
-  let playinterval =  setInterval(removeHa, 2900);
-
-  if (hungerWidth <= 0) {
-    clearInterval(hungerinterval)
-    clearInterval(thirstinterval)
-    clearInterval(restinterval)
-    clearInterval(playinterval)
+    if (hungerWidth <= 0) {
+    dead();
+    clearInterval(hungerinterval);
+    clearInterval(thirstinterval);
+    clearInterval(restinterval);
+    clearInterval(playinterval);
+    clearInterval(widthInterval);
   }
+    if (thirstWidth <= 0) {
+    dead();
+    clearInterval(hungerinterval);
+    clearInterval(thirstinterval);
+    clearInterval(restinterval);
+    clearInterval(playinterval);
+    clearInterval(widthInterval);
+  }
+    if (restWidth <= 0) {
+    dead();
+    clearInterval(hungerinterval);
+    clearInterval(thirstinterval);
+    clearInterval(restinterval);
+    clearInterval(playinterval);
+    clearInterval(widthInterval);
+  }
+    if (haWidth <= 0) {
+    dead();
+    clearInterval(hungerinterval);
+    clearInterval(thirstinterval);
+    clearInterval(restinterval);
+    clearInterval(playinterval);
+    clearInterval(widthInterval);
+  }
+
+  console.log(hungerWidth)
+}
+
+  
 
 
 }
@@ -260,10 +285,6 @@ function dead() {
   const rest = document.getElementById('rest');
   const happiness = document.getElementById('happiness');
 
-  // clearInterval(hungerinterval);
-  // clearInterval(thirstinterval);
-  // clearInterval(restinterval);
-  // clearInterval(playinterval);
 
   music.play();
 
