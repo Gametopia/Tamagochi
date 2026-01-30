@@ -285,6 +285,8 @@ function dead() {
   const rest = document.getElementById('rest');
   const happiness = document.getElementById('happiness');
 
+  document.getElementById('buttons').style.display = 'none'
+
 
   music.play();
 
